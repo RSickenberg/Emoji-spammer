@@ -7,11 +7,12 @@ public class heart {
 
     private Robot bot = new Robot();
 
-    public static void init(int loop, String message, boolean addPeriods) throws AWTException {
-        new heart(loop, message, addPeriods);
+    public static void init(String message, int loop, boolean addPeriods) throws AWTException, InterruptedException {
+        Thread.sleep(4000);
+        new heart(message, loop, addPeriods);
     }
 
-    private heart(int loop, String message, boolean addPeriods) throws AWTException {
+    private heart(String message, int loop, boolean addPeriods) throws AWTException {
         bot.setAutoDelay(20);
         bot.setAutoWaitForIdle(true);
         bot.delay(4000);

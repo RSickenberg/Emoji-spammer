@@ -2,7 +2,6 @@ package com.sickenberg.heart;
 import java.awt.*;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.security.Key;
 
 public class heart {
 

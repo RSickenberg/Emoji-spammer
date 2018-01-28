@@ -8,23 +8,28 @@ public class heart {
 
     private Robot bot = new Robot();
 
-    public static void init(int loop, String message) throws AWTException {
-        new heart(loop, message);
+    public static void init(int loop, String message, boolean addPeriods) throws AWTException {
+        new heart(loop, message, addPeriods);
     }
 
-    private heart(int loop, String message) throws AWTException {
+    private heart(int loop, String message, boolean addPeriods) throws AWTException {
         bot.setAutoDelay(20);
         bot.setAutoWaitForIdle(true);
         bot.delay(4000);
 
         for (int nbloop=0; nbloop <= loop; nbloop++) {
-            bot.keyPress(KeyEvent.VK_SHIFT); // MAJ
-            bot.keyPress(KeyEvent.VK_PERIOD); // :
-            bot.keyRelease(KeyEvent.VK_SHIFT); // Release MAJ
+            if (addPeriods)
+            {
+                bot.keyPress(KeyEvent.VK_SHIFT); // MAJ
+                bot.keyPress(KeyEvent.VK_PERIOD); // :
+                bot.keyRelease(KeyEvent.VK_SHIFT); // Release MAJ
+            }
             type(message); // Typed emoji
-            bot.keyPress(KeyEvent.VK_SHIFT);
-            bot.keyPress(KeyEvent.VK_PERIOD);
-            bot.keyRelease(KeyEvent.VK_SHIFT);
+            if (addPeriods) {
+                bot.keyPress(KeyEvent.VK_SHIFT);
+                bot.keyPress(KeyEvent.VK_PERIOD);
+                bot.keyRelease(KeyEvent.VK_SHIFT);
+            }
             bot.keyPress(KeyEvent.VK_SPACE); // TODO : NEED IMPROVEMENTS
             bot.keyPress(KeyEvent.VK_ENTER); // SEND emoji from whatsaap
             type(KeyEvent.VK_ENTER); // SEND MESSAGE

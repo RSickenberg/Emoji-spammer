@@ -24,6 +24,12 @@ You can, if you want, change the emoji name to spam your Girlfriend or just a fr
 
 ## Todo :
 
-- GUI -> In progress
-- Better enter message in Whatsaap
+- GUI : Done !
+- Better enter message in Whatsaap : In progress
 - Maybe improve speed
+
+## Download :
+
+Take the latest releases, and only the `.jar` file !
+
+https://github.com/RSickenberg/Emoji-spammer/releases

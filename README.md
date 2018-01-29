@@ -17,10 +17,7 @@ https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif
 
 ## Okay, so how it works ?
 
-Simple, on the Main, you can set up (V.0.1) whitch number of loop, and the emoji name, the markdown will be set inside Heart class, with the `:` (I put 80% of the dev time for this...)
-
-You can, if you want, change the emoji name to spam your Girlfriend or just a friend with a Poop.
-
+You have GUI ! 😀, you choose your Emoji (or other word), and check choose the number of loop or if you want the `:`
 
 ## Todo :
 

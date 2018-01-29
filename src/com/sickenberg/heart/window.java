@@ -8,9 +8,6 @@ import java.awt.event.ActionListener;
 public class window extends JFrame implements ActionListener {
 
     // Connexion with heart
-    private String emoji;
-    private int loop;
-    private boolean addPeriod;
     private JLabel emojiLabel, periodLabel;
     private JSpinner loopField;
     private JCheckBox addPeriodButton;
@@ -88,7 +85,7 @@ public class window extends JFrame implements ActionListener {
             }
             catch (Exception l)
             {
-                l.getMessage();
+                System.out.println(l.getMessage());
             }
         }
     }

@@ -7,8 +7,7 @@ public class heart {
 
     private Robot bot = new Robot();
 
-    public static void init(String message, int loop, boolean addPeriods) throws AWTException, InterruptedException {
-        Thread.sleep(4000);
+    public static void init(String message, int loop, boolean addPeriods) throws AWTException {
         new heart(message, loop, addPeriods);
     }
 

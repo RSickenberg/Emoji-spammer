@@ -34,6 +34,7 @@ public class window extends JFrame implements ActionListener {
         contentPane.add(emojiResult);
 
         loopField = new JSpinner();
+        loopField.setSize(50, 10);
         contentPane.add(loopField);
 
         periodLabel = new JLabel("Add \":\" ?");

@@ -1,6 +1,6 @@
 package com.sickenberg.heart;
+
 import java.awt.*;
-import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
 public class heart {
@@ -16,24 +16,27 @@ public class heart {
         bot.setAutoWaitForIdle(true);
         bot.delay(4000);
 
-        for (int nbloop=0; nbloop <= loop; nbloop++) {
-            if (addPeriods)
-            {
-                bot.keyPress(KeyEvent.VK_SHIFT); // MAJ
-                bot.keyPress(KeyEvent.VK_PERIOD); // :
-                bot.keyRelease(KeyEvent.VK_SHIFT); // Release MAJ
-            }
-            type(message); // Typed emoji
-            if (addPeriods) {
-                bot.keyPress(KeyEvent.VK_SHIFT);
-                bot.keyPress(KeyEvent.VK_PERIOD);
-                bot.keyRelease(KeyEvent.VK_SHIFT);
-            }
-            bot.keyPress(KeyEvent.VK_SPACE); // TODO : NEED IMPROVEMENTS
-            bot.keyPress(KeyEvent.VK_ENTER); // SEND emoji from whatsaap
-            type(KeyEvent.VK_ENTER); // SEND MESSAGE
+        Thread t = new Thread(() -> {
+            for (int nbloop=0; nbloop <= loop; nbloop++) {
+                if (addPeriods)
+                {
+                    bot.keyPress(KeyEvent.VK_SHIFT); // MAJ
+                    bot.keyPress(KeyEvent.VK_PERIOD); // :
+                    bot.keyRelease(KeyEvent.VK_SHIFT); // Release MAJ
+                }
+                type(message); // Typed emoji
+                if (addPeriods) {
+                    bot.keyPress(KeyEvent.VK_SHIFT);
+                    bot.keyPress(KeyEvent.VK_PERIOD);
+                    bot.keyRelease(KeyEvent.VK_SHIFT);
+                }
+                bot.keyPress(KeyEvent.VK_SPACE); // TODO : NEED IMPROVEMENTS
+                bot.keyPress(KeyEvent.VK_ENTER); // SEND emoji from whatsaap
+                type(KeyEvent.VK_ENTER); // SEND MESSAGE
 
-        }
+            }
+        });
+        t.start();
     }
 
     private void type(int i)

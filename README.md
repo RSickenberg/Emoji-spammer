@@ -24,6 +24,6 @@ You can, if you want, change the emoji name to spam your Girlfriend or just a fr
 
 ## Todo :
 
-- GUI
+- GUI -> In progress
 - Better enter message in Whatsaap
 - Maybe improve speed

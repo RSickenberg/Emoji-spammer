@@ -2,37 +2,45 @@ package com.sickenberg.heart;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 public class heart {
 
     private Robot bot = new Robot();
 
-    public static void init(String message, int loop, boolean addPeriods) throws AWTException {
-        new heart(message, loop, addPeriods);
+    public static void init(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException {
+        new heart(message, loop, addPeriods, autoSend);
     }
 
-    private heart(String message, int loop, boolean addPeriods) throws AWTException {
+    private heart(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException {
         bot.setAutoDelay(20);
         bot.setAutoWaitForIdle(true);
-        bot.delay(4000);
+        bot.delay(1000);
 
         Thread t = new Thread(() -> {
             for (int nbloop=0; nbloop <= loop; nbloop++) {
+
                 if (addPeriods)
                 {
                     bot.keyPress(KeyEvent.VK_SHIFT); // MAJ
                     bot.keyPress(KeyEvent.VK_PERIOD); // :
                     bot.keyRelease(KeyEvent.VK_SHIFT); // Release MAJ
                 }
+
                 type(message); // Typed emoji
+
                 if (addPeriods) {
-                    bot.keyPress(KeyEvent.VK_SHIFT);
-                    bot.keyPress(KeyEvent.VK_PERIOD);
-                    bot.keyRelease(KeyEvent.VK_SHIFT);
+                    type(KeyEvent.VK_TAB);
                 }
-                bot.keyPress(KeyEvent.VK_SPACE); // TODO : NEED IMPROVEMENTS
-                bot.keyPress(KeyEvent.VK_ENTER); // SEND emoji from whatsaap
-                type(KeyEvent.VK_ENTER); // SEND MESSAGE
+
+                bot.delay(20);
+
+                if (autoSend)
+                {
+                    bot.delay(20);
+                    bot.keyPress(KeyEvent.VK_ENTER);
+                    bot.keyRelease(KeyEvent.VK_ENTER);
+                }
 
             }
         });

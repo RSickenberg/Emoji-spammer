@@ -4,13 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 public class window extends JFrame implements ActionListener {
 
     // Connexion with heart
-    private JLabel emojiLabel, periodLabel;
+    private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel;
     private JSpinner loopField;
-    private JCheckBox addPeriodButton;
+    private JCheckBox addPeriodButton, autoSendButton;
     private JTextField emojiResult;
     private JButton runRobot;
 
@@ -33,6 +34,9 @@ public class window extends JFrame implements ActionListener {
         emojiResult = new JTextField(7);
         contentPane.add(emojiResult);
 
+        loopLabel = new JLabel("Number of loops :");
+        contentPane.add(loopLabel);
+
         loopField = new JSpinner();
         loopField.setSize(50, 10);
         contentPane.add(loopField);
@@ -42,6 +46,12 @@ public class window extends JFrame implements ActionListener {
 
         addPeriodButton = new JCheckBox();
         contentPane.add(addPeriodButton);
+
+        autoSendLabel = new JLabel("Auto send the message after an emoji ?");
+        contentPane.add(autoSendLabel);
+
+        autoSendButton = new JCheckBox();
+        contentPane.add(autoSendButton);
 
         runRobot = new JButton("Start");
         runRobot.addActionListener(this);
@@ -56,7 +66,7 @@ public class window extends JFrame implements ActionListener {
 
         String emojiName;
         int loopRepetitions;
-        boolean addPeriodButtonValue;
+        boolean addPeriodButtonValue, autoSendButtonValue;
 
         if (e.getSource() == runRobot) {
             try {
@@ -66,23 +76,32 @@ public class window extends JFrame implements ActionListener {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(this, "No emoji has been given");
-                    System.out.println("No emoji -> Exception");
-                    throw new RuntimeException("No emoji has been given");
+                    JOptionPane.showMessageDialog(this, "No emoji has been given.");
+                    throw new RuntimeException("[Exception] : No Emoji");
                 }
                 if (!loopField.getValue().equals(0) || loopField.getValue().hashCode() > 0) {
                     loopRepetitions = loopField.getValue().hashCode();
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(this, "Not valid value for loop");
-                    System.out.println("Not valid int loop -> Exception");
-                    throw new RuntimeException("Not valid int loop");
+                    JOptionPane.showMessageDialog(this, "Not valid value for loop.");
+                    throw new RuntimeException("[Exception] : Negative int or null");
                 }
                 addPeriodButtonValue = addPeriodButton.isSelected();
+                autoSendButtonValue = autoSendButton.isSelected();
 
-                JOptionPane.showMessageDialog(this, "Ok, you have 4 seconds to select a text field");
-                heart.init(emojiName, loopRepetitions, addPeriodButtonValue);
+                JOptionPane.showMessageDialog(this, "Ok, you have 5 seconds to select a text field after the OK.");
+
+                Thread bot = new Thread(() -> {
+                    try {
+                        heart.init(emojiName, loopRepetitions, addPeriodButtonValue, autoSendButtonValue);
+                    } catch (AWTException e1) {
+                        e1.printStackTrace();
+                    }
+                });
+
+                TimeUnit.SECONDS.sleep(5);
+                bot.start();
             }
             catch (Exception l)
             {

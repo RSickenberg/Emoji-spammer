@@ -31,6 +31,7 @@ public class heart {
 
                 if (addPeriods) {
                     type(KeyEvent.VK_TAB);
+                    type(KeyEvent.VK_SPACE);
                 }
 
                 bot.delay(20);

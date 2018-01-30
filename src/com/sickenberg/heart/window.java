@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class window extends JFrame implements ActionListener {
 
     // Connexion with heart
-    private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel;
+    private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel, emojiPerdia;
     private JSpinner loopField;
     private JCheckBox addPeriodButton, autoSendButton;
     private JTextField emojiResult;
@@ -21,7 +21,7 @@ public class window extends JFrame implements ActionListener {
 
     private void initview() throws AWTException {
         this.setTitle("Emoji-spammer");
-        this.setSize(500, 100);
+        this.setSize(500, 120);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +57,8 @@ public class window extends JFrame implements ActionListener {
         runRobot.addActionListener(this);
         contentPane.add(runRobot);
 
+        emojiPerdia = new JLabel("You can check emoji's name: here https://emojipedia.org");
+        contentPane.add(emojiPerdia);
 
         this.setVisible(true);
     }

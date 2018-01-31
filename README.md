@@ -1,4 +1,4 @@
-# Emoji-spammer
+# Emoji-spammer [![Build Status](https://travis-ci.org/RSickenberg/Emoji-spammer.svg?branch=master)](https://travis-ci.org/RSickenberg/Emoji-spammer)
 Made by Romain Sickenberg with ❤️
 
 

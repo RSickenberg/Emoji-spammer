@@ -28,7 +28,7 @@ public class window extends JFrame implements ActionListener {
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new FlowLayout());
 
-        emojiLabel = new JLabel("With emoji ?");
+        emojiLabel = new JLabel("Which emoji ?");
         contentPane.add(emojiLabel);
 
         emojiResult = new JTextField(7);
@@ -57,7 +57,7 @@ public class window extends JFrame implements ActionListener {
         runRobot.addActionListener(this);
         contentPane.add(runRobot);
 
-        emojiPerdia = new JLabel("You can check emoji's name: here https://emojipedia.org");
+        emojiPerdia = new JLabel("You can check emoji's name: https://emojipedia.org");
         contentPane.add(emojiPerdia);
 
         this.setVisible(true);
@@ -72,20 +72,15 @@ public class window extends JFrame implements ActionListener {
 
         if (e.getSource() == runRobot) {
             try {
-                if (!emojiResult.getText().equals(""))
-                {
+                if (!emojiResult.getText().equals("")) {
                     emojiName = emojiResult.getText();
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(this, "No emoji has been given.");
                     throw new RuntimeException("[Exception] : No Emoji");
                 }
                 if (!loopField.getValue().equals(0) || loopField.getValue().hashCode() > 0) {
                     loopRepetitions = loopField.getValue().hashCode();
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(this, "Not valid value for loop.");
                     throw new RuntimeException("[Exception] : Negative int or null");
                 }
@@ -104,9 +99,7 @@ public class window extends JFrame implements ActionListener {
 
                 TimeUnit.SECONDS.sleep(5);
                 bot.start();
-            }
-            catch (Exception l)
-            {
+            } catch (Exception l) {
                 System.out.println(l.getMessage());
             }
         }

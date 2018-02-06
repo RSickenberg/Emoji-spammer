@@ -2,6 +2,7 @@ package com.sickenberg.heart;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 public class heart {
 
@@ -12,52 +13,53 @@ public class heart {
     }
 
     private heart(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException {
-        bot.setAutoDelay(10);
+        bot.setAutoDelay(20);
         bot.setAutoWaitForIdle(true);
         bot.delay(1000);
 
         Thread t = new Thread(() -> {
-            for (int nbloop = 0; nbloop <= loop; nbloop++) {
+            for (int nbloop=0; nbloop <= loop; nbloop++) {
 
-                if (addPeriods) {
-                    bot.keyPress(KeyEvent.VK_SHIFT);
-                    bot.keyPress(KeyEvent.VK_PERIOD);
-                    bot.keyRelease(KeyEvent.VK_SHIFT);
+                if (addPeriods)
+                {
+                    bot.keyPress(KeyEvent.VK_SHIFT); // MAJ
+                    bot.keyPress(KeyEvent.VK_PERIOD); // :
+                    bot.keyRelease(KeyEvent.VK_SHIFT); // Release MAJ
                 }
 
-                type(message);
+                type(message); // Typed emoji
 
                 if (addPeriods) {
                     type(KeyEvent.VK_TAB);
                     type(KeyEvent.VK_SPACE);
                 }
 
-                bot.delay(10);
+                bot.delay(20);
 
-                if (autoSend) {
+                if (autoSend)
+                {
                     bot.delay(20);
                     bot.keyPress(KeyEvent.VK_ENTER);
                     bot.keyRelease(KeyEvent.VK_ENTER);
                 }
 
-                if (!autoSend && !addPeriods) {
-                    type(KeyEvent.VK_SPACE);
-                }
             }
         });
-
         t.start();
     }
 
-    private void type(int i) {
+    private void type(int i)
+    {
         bot.delay(2);
         bot.keyPress(i);
         bot.keyRelease(i);
     }
 
-    private void type(String s) {
+    private void type(String s)
+    {
         byte[] bytes = s.getBytes();
-        for (byte b : bytes) {
+        for (byte b : bytes)
+        {
             int code = b;
             // keycode only handles [A-Z] (which is ASCII decimal [65-90])
             if (code > 96 && code < 123) code = code - 32;

@@ -87,7 +87,8 @@ public class Window extends JFrame implements ActionListener {
                 addPeriodButtonValue = addPeriodButton.isSelected();
                 autoSendButtonValue = autoSendButton.isSelected();
 
-                JOptionPane.showMessageDialog(this, "Ok, you have 5 seconds to select a text field after the OK. \n Be aware, this soft run well for WhatsApp for now.");
+                JOptionPane.showMessageDialog(this, "Ok, you have 5 seconds to select a text field after the OK. \nBe aware, this soft run well for WhatsApp for now.");
+                TimeUnit.SECONDS.sleep(5);
 
                 Thread bot = new Thread(() -> {
                     try {

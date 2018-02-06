@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            Window window = new Window();
+            new Window();
         } catch (AWTException e) {
             e.printStackTrace();
         }

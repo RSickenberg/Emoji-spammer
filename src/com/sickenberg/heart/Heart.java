@@ -16,33 +16,30 @@ public class Heart {
         bot.setAutoWaitForIdle(true);
         bot.delay(1000);
 
-        Thread t = new Thread(() -> {
-            for (int nbloop = 0; nbloop <= loop; nbloop++) {
+        for (int nbloop = 0; nbloop <= loop; nbloop++) {
 
-                if (addPeriods) {
-                    bot.keyPress(KeyEvent.VK_SHIFT);
-                    bot.keyPress(KeyEvent.VK_PERIOD);
-                    bot.keyRelease(KeyEvent.VK_SHIFT);
-                }
-
-                type(message);
-
-                if (addPeriods) {
-                    type(KeyEvent.VK_TAB);
-                    type(KeyEvent.VK_SPACE);
-                }
-
-                bot.delay(20);
-
-                if (autoSend) {
-                    bot.delay(20);
-                    bot.keyPress(KeyEvent.VK_ENTER);
-                    bot.keyRelease(KeyEvent.VK_ENTER);
-                }
-
+            if (addPeriods) {
+                bot.keyPress(KeyEvent.VK_SHIFT);
+                type(KeyEvent.VK_PERIOD);
+                bot.keyRelease(KeyEvent.VK_SHIFT);
             }
-        });
-        t.start();
+
+            type(message);
+
+            if (addPeriods) {
+                type(KeyEvent.VK_TAB);
+                type(KeyEvent.VK_SPACE);
+            }
+
+            bot.delay(20);
+
+            if (autoSend) {
+                bot.delay(20);
+                bot.keyPress(KeyEvent.VK_ENTER);
+                bot.keyRelease(KeyEvent.VK_ENTER);
+            }
+
+        }
     }
 
     private void type(int i) {

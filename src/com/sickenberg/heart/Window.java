@@ -6,16 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 
-public class window extends JFrame implements ActionListener {
+public class Window extends JFrame implements ActionListener {
 
-    // Connexion with heart
+    // Connexion with Heart
     private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel, emojiPerdia;
     private JSpinner loopField;
     private JCheckBox addPeriodButton, autoSendButton;
     private JTextField emojiResult;
     private JButton runRobot;
 
-    window() throws AWTException {
+    Window() throws AWTException {
         this.initview();
     }
 
@@ -57,7 +57,7 @@ public class window extends JFrame implements ActionListener {
         runRobot.addActionListener(this);
         contentPane.add(runRobot);
 
-        emojiPerdia = new JLabel("You can check emoji's name: here https://emojipedia.org");
+        emojiPerdia = new JLabel("You can check emoji's name: https://emojipedia.org");
         contentPane.add(emojiPerdia);
 
         this.setVisible(true);
@@ -72,31 +72,26 @@ public class window extends JFrame implements ActionListener {
 
         if (e.getSource() == runRobot) {
             try {
-                if (!emojiResult.getText().equals(""))
-                {
+                if (!emojiResult.getText().equals("")) {
                     emojiName = emojiResult.getText();
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(this, "No emoji has been given.");
                     throw new RuntimeException("[Exception] : No Emoji");
                 }
                 if (!loopField.getValue().equals(0) || loopField.getValue().hashCode() > 0) {
                     loopRepetitions = loopField.getValue().hashCode();
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(this, "Not valid value for loop.");
                     throw new RuntimeException("[Exception] : Negative int or null");
                 }
                 addPeriodButtonValue = addPeriodButton.isSelected();
                 autoSendButtonValue = autoSendButton.isSelected();
 
-                JOptionPane.showMessageDialog(this, "Ok, you have 5 seconds to select a text field after the OK.");
+                JOptionPane.showMessageDialog(this, "Ok, you have 5 seconds to select a text field after the OK. \n Be aware, this soft run well for WhatsApp for now.");
 
                 Thread bot = new Thread(() -> {
                     try {
-                        heart.init(emojiName, loopRepetitions, addPeriodButtonValue, autoSendButtonValue);
+                        Heart.init(emojiName, loopRepetitions, addPeriodButtonValue, autoSendButtonValue);
                     } catch (AWTException e1) {
                         e1.printStackTrace();
                     }
@@ -104,9 +99,7 @@ public class window extends JFrame implements ActionListener {
 
                 TimeUnit.SECONDS.sleep(5);
                 bot.start();
-            }
-            catch (Exception l)
-            {
+            } catch (Exception l) {
                 System.out.println(l.getMessage());
             }
         }

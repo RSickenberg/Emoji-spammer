@@ -7,11 +7,13 @@ public class Heart {
 
     private Robot bot = new Robot();
 
-    public static void init(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException {
+    public static void init(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException
+    {
         new Heart(message, loop, addPeriods, autoSend);
     }
 
-    private Heart(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException {
+    private Heart(String message, int loop, boolean addPeriods, boolean autoSend) throws AWTException
+    {
         bot.setAutoDelay(20);
         bot.setAutoWaitForIdle(true);
         bot.delay(1000);
@@ -42,13 +44,15 @@ public class Heart {
         }
     }
 
-    private void type(int i) {
+    private void type(int i)
+    {
         bot.delay(2);
         bot.keyPress(i);
         bot.keyRelease(i);
     }
 
-    private void type(String s) {
+    private void type(String s)
+    {
         byte[] bytes = s.getBytes();
         for (byte b : bytes) {
             int code = b;

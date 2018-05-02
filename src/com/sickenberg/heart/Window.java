@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 
-public class Window extends JFrame implements ActionListener {
+public class Window extends JFrame implements ActionListener
+{
 
     // Connexion with Heart
     private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel, emojiPerdia;
@@ -15,11 +16,13 @@ public class Window extends JFrame implements ActionListener {
     private JTextField emojiResult;
     private JButton runRobot;
 
-    Window() throws AWTException {
+    Window() throws AWTException
+    {
         this.initview();
     }
 
-    private void initview() throws AWTException {
+    private void initview() throws AWTException
+    {
         this.setTitle("Emoji-spammer");
         this.setSize(500, 120);
         this.setLocationRelativeTo(null);
@@ -64,13 +67,15 @@ public class Window extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
 
         String emojiName;
         int loopRepetitions;
         boolean addPeriodButtonValue, autoSendButtonValue;
 
-        if (e.getSource() == runRobot) {
+        if (e.getSource() == runRobot)
+        {
             try {
                 if (!emojiResult.getText().equals("")) {
                     emojiName = emojiResult.getText();
@@ -80,7 +85,8 @@ public class Window extends JFrame implements ActionListener {
                 }
                 if (!loopField.getValue().equals(0) || loopField.getValue().hashCode() > 0) {
                     loopRepetitions = loopField.getValue().hashCode();
-                } else {
+                }
+                else {
                     JOptionPane.showMessageDialog(this, "Not valid value for loop.");
                     throw new RuntimeException("[Exception] : Negative int or null");
                 }

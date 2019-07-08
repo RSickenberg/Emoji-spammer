@@ -10,7 +10,7 @@ public class Window extends JFrame implements ActionListener
 {
 
     // Connexion with Heart
-    private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel, emojiPerdia;
+    private JLabel emojiLabel, periodLabel, autoSendLabel, loopLabel, emojiPedia;
     private JSpinner loopField;
     private JCheckBox addPeriodButton, autoSendButton;
     private JTextField emojiResult;
@@ -60,8 +60,8 @@ public class Window extends JFrame implements ActionListener
         runRobot.addActionListener(this);
         contentPane.add(runRobot);
 
-        emojiPerdia = new JLabel("You can check emoji's name: https://emojipedia.org");
-        contentPane.add(emojiPerdia);
+        emojiPedia = new JLabel("You can check emoji's name: https://emojipedia.org");
+        contentPane.add(emojiPedia);
 
         this.setVisible(true);
     }
